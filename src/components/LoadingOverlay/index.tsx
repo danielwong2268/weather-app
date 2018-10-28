@@ -13,6 +13,8 @@ const Overlay = styled('div')`
   justify-content: center;
   align-items: center;
   z-index: 10;
+  top: 0;
+  left: 0;
 `;
 
 const LoadingOverlay = () => (
