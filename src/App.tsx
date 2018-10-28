@@ -2,21 +2,24 @@ import * as React from 'react';
 import styled from 'react-emotion';
 import './App.css';
 import 'antd/dist/antd.css'; 
+import Spacer from './components/Spacer';
 
 const Div = styled('div')`
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  justify-items: center;
-  padding: 40px;
+  padding: 40px 20px;
 `;
 
 class App extends React.Component {
   public render() {
     return (
-      <Div className="App">
-        <div>some content</div>
-      </Div>
+      <>
+        <Spacer />
+        <Div className="App">
+          <h1>Please enter the name of your city.</h1>
+          <div>some content</div>
+        </Div>
+      </>
     );
   }
 }
