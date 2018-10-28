@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FadeTransition /> Renders with children 1`] = `
+<div
+  className="css-3u43w9"
+>
+  <CSSTransition
+    classNames="fade-in"
+    in={true}
+    timeout={
+      Object {
+        "enter": 250,
+        "exit": 250,
+      }
+    }
+    unmountOnExit={true}
+  >
+    <div>
+      child
+    </div>
+  </CSSTransition>
+</div>
+`;

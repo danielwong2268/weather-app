@@ -14,22 +14,26 @@ interface WeatherInputFormState {
   formError: string;
 }
 
+export const emptyInputError = 'Please fill in a city';
+export const cityNotFoundError = `We can't find that city. Please double check that it's spelled correctly`;
+export const genericSubmissionError = 'Oops! Something went wrong. Please try again in a bit';
+
 class WeatherInputForm extends React.Component<WeatherInputFormProps, WeatherInputFormState> {
   state = {
     city: '',
     formError: ''
   }
 
-  updateCity = (e: React.FormEvent<HTMLInputElement>) => {
+  updateCity = (e: React.ChangeEvent<HTMLInputElement>) => {
     this.setState({
-      city: e.currentTarget.value
+      city: e.target.value
     });
   }
 
   onSubmit = () => {
     if (this.state.city === '') {
       return this.setState({
-        formError: 'Please fill in a city'
+        formError: emptyInputError
       })
     }
 
@@ -45,16 +49,15 @@ class WeatherInputForm extends React.Component<WeatherInputFormProps, WeatherInp
 
     switch (this.props.error) {
       case WeatherError.CITY_NOT_FOUND:
-        return <ErrorMessage>We can't find that city. Please double check that it's spelled correctly</ErrorMessage>;
+        return <ErrorMessage>{cityNotFoundError}</ErrorMessage>;
       case WeatherError.GENERIC_ERROR:
-        return <ErrorMessage>Oops! Something went wrong. Please try again in a bit</ErrorMessage>;
+        return <ErrorMessage>{genericSubmissionError}</ErrorMessage>;
       case undefined:
         return '';
     }
   }
 
   render() {
-    // const { error } = this.props;
     const { city } = this.state;
 
     return (

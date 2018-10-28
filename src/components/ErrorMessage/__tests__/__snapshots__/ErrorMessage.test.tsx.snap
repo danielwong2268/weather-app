@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ErrorMessage /> Renders with an error message 1`] = `
+<div
+  className="css-1kpr6lr"
+>
+  my error message
+</div>
+`;

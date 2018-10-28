@@ -19,7 +19,7 @@ const Overlay = styled('div')`
 
 const LoadingOverlay = () => (
   <Overlay>
-      <Spinner />
+    <Spinner />
   </Overlay>
 );
 

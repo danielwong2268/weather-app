@@ -38,8 +38,8 @@ class App extends React.Component<{}, AppState> {
             <FadeTransition inProp={this.state.mounted}>
               <Spacer />
               <Div className="App">
-                { weatherData && <WeatherDisplay weatherData={weatherData} /> }
                 { !weatherData && <WeatherInputForm error={error} onSubmit={onSubmit} /> }
+                { weatherData && <WeatherDisplay weatherData={weatherData} /> }
                 { isLoading && <LoadingOverlay /> }
               </Div>
             </FadeTransition>

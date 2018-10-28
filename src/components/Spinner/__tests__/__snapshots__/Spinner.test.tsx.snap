@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Spinner /> Renders a div with className "lds-ripple" and two children divs 1`] = `
+<div
+  className="css-13jsfnt"
+>
+  <div
+    className="lds-ripple"
+  >
+    <div />
+    <div />
+  </div>
+</div>
+`;

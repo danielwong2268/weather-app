@@ -8,12 +8,12 @@ interface WeatherApiContainerState {
   error?: WeatherError;
 }
 
-type RenderProps = WeatherApiContainerState & {
+export type WeatherApiContainerRenderProps = WeatherApiContainerState & {
   onSubmit: WeatherApiContainer['onSubmit']
 }
 
 interface WeatherApiContainerProps {
-  children: (renderProps: RenderProps) => React.ReactNode;
+  children: (renderProps: WeatherApiContainerRenderProps) => React.ReactNode;
 }
 
 class WeatherApiContainer extends React.Component<WeatherApiContainerProps, WeatherApiContainerState> {
@@ -22,7 +22,7 @@ class WeatherApiContainer extends React.Component<WeatherApiContainerProps, Weat
   }
 
   onSubmit = (city: string) => {
-    this.setState(() => ({ isLoading: true }));
+    this.setState({ isLoading: true });
     weatherService.getWeatherData(city)
       .then(data => {
         this.setState({
@@ -41,8 +41,6 @@ class WeatherApiContainer extends React.Component<WeatherApiContainerProps, Weat
         }));
       });
   }
-
-
 
   render() {
     return this.props.children({ ...this.state, onSubmit: this.onSubmit });

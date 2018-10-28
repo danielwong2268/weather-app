@@ -32,9 +32,7 @@ const FadeTransition = ({
       timeout={{ enter: 250, exit: 250 }}
       classNames="fade-in"
     >
-      <div>
-        {children}
-      </div>
+      <div>{children}</div>
     </CSSTransition>
   </div>
 );

@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FadeTransition /> Renders an the overlay 1`] = `
+<Styled(div)>
+  <Spinner />
+</Styled(div)>
+`;
