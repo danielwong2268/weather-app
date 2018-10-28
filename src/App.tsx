@@ -3,10 +3,14 @@ import styled from 'react-emotion';
 import './App.css';
 import 'antd/dist/antd.css'; 
 import Spacer from './components/Spacer';
-import FadeTransition from './components';
+import FadeTransition from './components/FadeTransition';
+import WeatherInputForm from './components/WeatherInputForm';
+import LoadingOverlay from './components/LoadingOverlay';
+import WeatherApiContainer from './components/WeatherApiContainer';
+import WeatherDisplay from './components/WeatherDisplay/WeatherDisplay';
 
 const Div = styled('div')`
-  max-width: 1200px;
+  max-width: 600px;
   margin: 0 auto;
   padding: 40px 20px;
 `;
@@ -16,7 +20,9 @@ interface AppState {
 }
 
 class App extends React.Component<{}, AppState> {
-  state = { mounted: false }
+  state: AppState = {
+    mounted: false
+  }
 
   componentDidMount() {
     this.setState(() => ({
@@ -26,15 +32,20 @@ class App extends React.Component<{}, AppState> {
 
   public render() {
     return (
-      <>
-        <Spacer />
-        <FadeTransition inProp={this.state.mounted}>
-          <Div className="App">
-            <h1>Please enter the name of your city.</h1>
-            <div>some content</div>
-          </Div>
-        </FadeTransition>
-      </>
+      <WeatherApiContainer>
+        {
+          ({ isLoading, weatherData, onSubmit, error }) => (
+            <FadeTransition inProp={this.state.mounted}>
+              <Div className="App">
+                { isLoading && <LoadingOverlay /> }
+                <Spacer />
+                { weatherData && <WeatherDisplay weatherData={weatherData} /> }
+                { !weatherData && <WeatherInputForm error={error} onSubmit={onSubmit} /> }
+              </Div>
+            </FadeTransition>
+          )
+        }
+      </WeatherApiContainer>
     );
   }
 }
