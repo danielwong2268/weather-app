@@ -3,6 +3,7 @@ Bootstrapped with create-react-app, react-scripts-ts
 To run the app:
 `npm install`
 `npm start`
+go to `localhost:3000`
 
 To run tests:
 `npm test`.
