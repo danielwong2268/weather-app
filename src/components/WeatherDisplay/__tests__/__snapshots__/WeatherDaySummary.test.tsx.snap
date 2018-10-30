@@ -21,9 +21,6 @@ exports[`<WeatherDaySummary /> Renders with summary data and icons 1`] = `
       80
       °F
     </div>
-    <div>
-      rainy
-    </div>
   </div>
   <Styled(div)>
     <IconTooltip
