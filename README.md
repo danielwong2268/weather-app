@@ -1,8 +1,8 @@
 Bootstrapped with create-react-app, react-scripts-ts
 
 To run the app:  
-`npm install`  
-`npm start`  
+`yarn install`  
+`yarn start`  
 go to `localhost:3000`
 
 To run tests:
@@ -10,7 +10,7 @@ To run tests:
 Jest is running a little slow, I haven't had much time to look into it.
 
 Notes:
-- Used https://openweathermap.org/ 
+- Used https://openweathermap.org/
 - Display an umbrella icon if it's the best day to sell an umbrella
 - Display a jacket icon if it's the best day to sell a jacket
 
