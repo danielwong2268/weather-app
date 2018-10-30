@@ -9,7 +9,8 @@ To run tests:
 `npm test`  
 Jest is running a little slow, I haven't had much time to look into it.
 
-Design:
+Notes:
+- Used https://openweathermap.org/ 
 - Display an umbrella icon if it's the best day to sell an umbrella
 - Display a jacket icon if it's the best day to sell a jacket
 
