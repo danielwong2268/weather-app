@@ -1,12 +1,12 @@
 Bootstrapped with create-react-app, react-scripts-ts
 
-To run the app:
-`npm install`
-`npm start`
+To run the app:  
+`npm install`  
+`npm start`  
 go to `localhost:3000`
 
 To run tests:
-`npm test`.
+`npm test`  
 Jest is running a little slow, I haven't had much time to look into it.
 
 Design:
