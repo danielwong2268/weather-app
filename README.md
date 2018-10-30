@@ -5,7 +5,7 @@ To run the app:
 `npm start`
 
 To run tests:
-`npm test`
+`npm test`.
 Jest is running a little slow, I haven't had much time to look into it.
 
 Design:
