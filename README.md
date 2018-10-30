@@ -5,8 +5,8 @@ To run the app:
 `npm start`
 
 To run tests:
-# Jest is running a little slow, I haven't had much time to look into it.
 `npm test`
+Jest is running a little slow, I haven't had much time to look into it.
 
 Design:
 - Display an umbrella icon if it's the best day to sell an umbrella
