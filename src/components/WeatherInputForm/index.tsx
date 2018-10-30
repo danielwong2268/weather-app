@@ -1,7 +1,7 @@
 import React from 'react';
 import { Input, Button } from 'antd';
 import { css } from 'emotion';
-import { WeatherError } from 'src/types/weatherTypes';
+import { WeatherError } from 'src/types/weatherApiResponseType';
 import ErrorMessage from '../ErrorMessage';
 
 interface WeatherInputFormProps {
@@ -61,7 +61,7 @@ class WeatherInputForm extends React.Component<WeatherInputFormProps, WeatherInp
     const { city } = this.state;
 
     return (
-      <>
+      <div className={css`margin-bottom: 10px;`}>
         <h1>Please enter the name of your city.</h1>
         <div className={css`width: 80%; margin: 10px auto;`}>
           <Input
@@ -74,7 +74,7 @@ class WeatherInputForm extends React.Component<WeatherInputFormProps, WeatherInp
         <Button onClick={this.onSubmit} className={css`width: 80%;`}>
           Enter
         </Button>
-      </>
+      </div>
     );
   }
 }

@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 import WeatherInputForm, { emptyInputError, cityNotFoundError, genericSubmissionError } from '..';
 import { Input, Button } from 'antd';
 import ErrorMessage from 'src/components/ErrorMessage';
-import { WeatherError } from 'src/types/weatherTypes';
+import { WeatherError } from 'src/types/weatherApiResponseType';
 
 describe('<WeatherInputForm />', () => {
   it('Input display updates correctly when changed', () => {

@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<WeatherDaySummary /> Renders with summary data and icons 1`] = `
+<Styled(div)>
+  <img
+    alt="weather icon"
+    className="css-da14pc"
+    src="http://openweathermap.org/img/w/01d.png"
+  />
+  <div
+    className="css-135wvy2"
+  >
+    <div
+      className="css-1b1bivf"
+    >
+      10/21
+    </div>
+    <div>
+      70
+       - 
+      80
+      °F
+    </div>
+    <div>
+      rainy
+    </div>
+  </div>
+  <Styled(div)>
+    <IconTooltip
+      text="Sell umbrellas on this day!"
+    >
+      <UmbrellaIcon />
+    </IconTooltip>
+    <IconTooltip
+      text="Sell jackets on this day!"
+    >
+      <JacketIcon />
+    </IconTooltip>
+  </Styled(div)>
+</Styled(div)>
+`;

@@ -6,6 +6,7 @@
     "ordered-imports": false,
     "interface-name": [true, "never-prefix"],
     "member-access": false,
+    "curly": [true, "ignore-same-line"],
     "jsx-boolean-value": false,
     "jsx-no-lambda": false,
     "object-literal-sort-keys": false

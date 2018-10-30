@@ -1,5 +1,5 @@
 import json from '../fixtures/stubbedWeatherData';
-import { WeatherData } from 'src/types/weatherTypes';
+import { WeatherApiResponse } from 'src/types/weatherApiResponseType';
 
 const wait = () => {
   return new Promise(resolve => {
@@ -10,7 +10,7 @@ const wait = () => {
 }
 
 const weatherService = {
-  async getWeatherData(city: string): Promise<WeatherData> {
+  async getWeatherData(city: string): Promise<WeatherApiResponse> {
     await wait();
     return json;
   }
