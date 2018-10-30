@@ -11,8 +11,8 @@ Jest is running a little slow, I haven't had much time to look into it.
 
 Notes:
 - Used https://openweathermap.org/
-- Display an umbrella icon if it's the best day to sell an umbrella
-- Display a jacket icon if it's the best day to sell a jacket
+- Display an umbrella icon tooltip if it's the best day to sell an umbrella
+- Display a jacket icon tooltip if it's the best day to sell a jacket
 
 Assumptions:
 1. The best day to sell an umbrella is the first rainy day of the five days displayed
