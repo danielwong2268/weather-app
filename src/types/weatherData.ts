@@ -2,7 +2,7 @@ export interface WeatherDaySummary {
   maxTemp: number;
   minTemp: number;
   day: string;
-  totalRainMm: number;
+  isRaining: boolean;
   icon: string;
   overallDesc: string;
 }

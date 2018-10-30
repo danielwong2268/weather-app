@@ -1,18 +1,13 @@
-import json from '../fixtures/stubbedWeatherData';
+import { apiKey } from 'src/constants/keys';
 import { WeatherApiResponse } from 'src/types/weatherApiResponseType';
-
-const wait = () => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, 500);
-  });
-}
 
 const weatherService = {
   async getWeatherData(city: string): Promise<WeatherApiResponse> {
-    await wait();
-    return json;
+    const url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${apiKey}`;
+    const result = await fetch(url);
+
+    if (!result.ok) throw result;
+    return result.json();
   }
 }
 

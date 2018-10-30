@@ -1,24 +1,16 @@
 import React from 'react';
+import findIndex from 'lodash/findIndex';
 import WeatherDay from './WeatherDaySummary';
 import { WeatherDaySummary } from 'src/types/weatherData';
 
 interface WeatherDisplayProps {
   weatherData: WeatherDaySummary[];
+  city: string;
 }
 
-export const getIndexOfDayWithMostRain = (weatherData: WeatherDaySummary[]) => {
-  if (weatherData.length === 0) return undefined;
-
-  const indexOfMax = weatherData.reduce((maxIndex, summary, currentIndex) =>
-    summary.totalRainMm > weatherData[maxIndex].totalRainMm
-      ? currentIndex
-      : maxIndex
-  , 0);
-
-  return (weatherData[indexOfMax].totalRainMm !== 0)
-    ? indexOfMax
-    : undefined;
-}
+export const getIndexOfFirstRainyDay = (weatherData: WeatherDaySummary[]) => (
+  findIndex(weatherData, day => day.isRaining)
+);
 
 export const getIndexOfDayWithMinTemp = (weatherData: WeatherDaySummary[]) => {
   if (weatherData.length === 0) return undefined;
@@ -30,17 +22,20 @@ export const getIndexOfDayWithMinTemp = (weatherData: WeatherDaySummary[]) => {
   , 0);
 }
 
-const WeatherDisplay = ({ weatherData }: WeatherDisplayProps) => {
-  const indexWithMostRain = getIndexOfDayWithMostRain(weatherData);
+const isColdEnoughToShowJacket = (temp: number) => temp <= 60;
+
+const WeatherDisplay = ({ weatherData, city }: WeatherDisplayProps) => {
+  const indexWithMostRain = getIndexOfFirstRainyDay(weatherData);
   const indexWithColdestTemp = getIndexOfDayWithMinTemp(weatherData);
 
   return (
     <div>
+      <h1>{city}</h1>
       {
         weatherData.map((summary, i) => (
           <WeatherDay
             showUmbrella={i === indexWithMostRain}
-            showJacket={i === indexWithColdestTemp}
+            showJacket={i === indexWithColdestTemp && isColdEnoughToShowJacket(summary.minTemp)}
             key={i} 
             summary={summary}
           />

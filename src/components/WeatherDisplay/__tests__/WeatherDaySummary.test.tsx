@@ -9,7 +9,7 @@ const testSummary = {
     maxTemp: 80,
     minTemp: 70,
     day: '10/21',
-    totalRainMm: 2,
+    isRaining: true,
     icon: '01',
     overallDesc: 'rainy'
 }

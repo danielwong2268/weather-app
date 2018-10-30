@@ -3,13 +3,16 @@ export interface WeatherApiResponse {
   message: number;
   cnt: number;
   list: WeatherEntry[];
+  city: {
+    name: string;
+  }
 }
 
 export interface WeatherEntry {
   dt_txt: string;
   main: WeatherMainDetails;
   weather: WeatherDetails[];
-  rain: { '3h'?: number };
+  rain?: { '3h'?: number };
 }
 
 interface WeatherDetails {

@@ -26,7 +26,7 @@ describe('<WeatherApiContainer />', () => {
   });
 
   it('After submitting, state is loading', () => {
-    (weatherService.getWeatherData as jest.Mock).mockImplementationOnce(() => Promise.resolve());
+    (weatherService.getWeatherData as jest.Mock).mockImplementationOnce(() => Promise.resolve(stubbedWeatherData));
     
     const wrapper = mount(getWeatherApiContainer());
     wrapper.find(TestChild).props().onSubmit('San Francisco');
@@ -50,6 +50,7 @@ describe('<WeatherApiContainer />', () => {
 
   it('After submitting, if 404, CITY_NOT_FOUND error is passed down to child', async () => {
     (weatherService.getWeatherData as jest.Mock).mockImplementationOnce(() => Promise.reject({
+      ok: false,
       status: 404
     }));
     
@@ -65,6 +66,7 @@ describe('<WeatherApiContainer />', () => {
 
   it('After submitting, if status code is not 404, GENERIC_ERROR error is passed down to child', async () => {
     (weatherService.getWeatherData as jest.Mock).mockImplementationOnce(() => Promise.reject({
+      ok: false,
       status: 503
     }));
     
@@ -113,6 +115,14 @@ describe('<WeatherApiContainer />', () => {
       expect(result[0].rainMm).toBe(0.025);
     })
 
+    it('If the rain object is not defined, then it sets rainMm to 0', () => {
+      const testEntries = getTestWeatherEntries();
+      testEntries[0].rain = undefined;
+
+      const result = parseItems(testEntries);
+      expect(result[0].rainMm).toBe(0);
+    })
+
     it('If a value for rain does not exist, then it sets rainMm to 0', () => {
       const testEntries = getTestWeatherEntries();
       testEntries[0].rain = {};
@@ -134,6 +144,7 @@ describe('<WeatherApiContainer />', () => {
     const getTestWeatherApiResponse: () => WeatherApiResponse = () => ({
       cod: '200',
       message: 0.0056,
+      city: { name: 'San Francisco '},
       cnt: 2,
       list: [{
         "main": {
@@ -185,6 +196,7 @@ describe('<WeatherApiContainer />', () => {
     it('Handles case if list is empty array', () => {
       const responseWithEmptyList: WeatherApiResponse = {
         cod: '200',
+        city: { name: 'san francisco' },
         message: 0.0056,
         cnt: 2,
         list: []
@@ -201,11 +213,11 @@ describe('<WeatherApiContainer />', () => {
       expect(result[1].day).toBe('10/29');
     });
 
-    it('Aggregates the amount of rainfall for each day', () => {
+    it('Determines whether it is raining based on icon', () => {
       const result = generateDailySummaries(getTestWeatherApiResponse());
 
-      expect(result[0].totalRainMm).toBe(0.1)
-      expect(result[1].totalRainMm).toBe(0)
+      expect(result[0].isRaining).toBeTruthy()
+      expect(result[1].isRaining).toBeFalsy()
     });
 
     it('Aggregates the icon for each day', () => {

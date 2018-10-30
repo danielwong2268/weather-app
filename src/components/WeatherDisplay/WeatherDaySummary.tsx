@@ -41,7 +41,6 @@ const WeatherDay = ({
     <div className={css`margin-left: 10px; text-align: left;`}>
       <div className={css`font-weight: bold;`}>{summary.day}</div>
       <div>{summary.minTemp} - {summary.maxTemp}°F</div>
-      <div>{summary.overallDesc}</div>
     </div>
     <Icons>
       { showUmbrella && <IconTooltip text="Sell umbrellas on this day!"><UmbrellaIcon /></IconTooltip> }

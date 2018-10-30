@@ -34,12 +34,12 @@ class App extends React.Component<{}, AppState> {
     return (
       <WeatherApiContainer>
         {
-          ({ isLoading, weatherData, onSubmit, error }) => (
+          ({ isLoading, weatherData, onSubmit, error, city }) => (
             <FadeTransition inProp={this.state.mounted}>
               <Spacer />
               <Div className="App">
                 <WeatherInputForm error={error} onSubmit={onSubmit} />
-                { weatherData && <WeatherDisplay weatherData={weatherData} /> }
+                { weatherData && <WeatherDisplay city={city} weatherData={weatherData} /> }
                 { isLoading && <LoadingOverlay /> }
               </Div>
             </FadeTransition>
